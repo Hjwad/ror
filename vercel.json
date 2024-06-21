@@ -2,8 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "Dockerfile",
+      "src": "requirements.txt",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "ZelzalMusic",
       "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "ZelzalMusic"
     }
   ]
 }
