@@ -1,9 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "ZelzalMusic", "use": "@vercel/static-build" }
+    { "src": "Dockerfile", "use": "@vercel/static-build" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "ZelzalMusic" }
+    { "src": "/(.*)", "dest": "Dockerfile" }
   ]
 }
