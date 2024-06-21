@@ -1,8 +1,15 @@
-services:
-  - type: web
-    name: Music
-    env: python
-    buildCommand: |
-      pip3 install --no-cache-dir -U -r requirements.txt
-    startCommand: 'bash start'
-    plan: free
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "ZelzalMusic",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "ZelzalMusic"
+    }
+  ]
+}
