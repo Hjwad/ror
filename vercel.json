@@ -6,7 +6,7 @@
       "use": "@vercel/python"
     },
     {
-      "src": "ZelzalMusic.py",
+      "src": "ZelzalMusic",
       "use": "@vercel/python"
     }
   ],
@@ -16,8 +16,8 @@
       "dest": "/zoz.py"
     },
     {
-      "src": "/zelzal(.*)",
-      "dest": "/ZelzalMusic.py"
+      "src": "/zelzalMusic(.*)",
+      "dest": "/ZelzalMusic"
     }
   ]
 }
