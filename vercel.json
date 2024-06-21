@@ -2,18 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "requirements.txt",
+      "src": "zoz.py",
       "use": "@vercel/python"
     },
     {
-      "src": "ZelzalMusic",
-      "use": "@vercel/static"
+      "src": "ZelzalMusic.py",
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "ZelzalMusic"
+      "src": "/zoz(.*)",
+      "dest": "/zoz.py"
+    },
+    {
+      "src": "/zelzal(.*)",
+      "dest": "/ZelzalMusic.py"
     }
   ]
 }
