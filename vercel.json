@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "start",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "public" }
+      "src": "zoz.py",
+      "use": "@vercel/python",
+      "config": { "start": "bash start" }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/start"
+      "dest": "zoz.py"
     }
   ]
 }
