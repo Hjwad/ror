@@ -1,13 +1,14 @@
 import os
 from flask import Flask
 from flask_restful import Resource, Api
+from flask import Flask, jsonify
 
 app = Flask(__name__)
-api = Api(app)
 
-class Greeting (Resource):
-    def get(self):
-        return "welcome"
+# Route to handle UptimeRobot requests
+@app.route('/check', methods=['GET'])
+def check():
+    return jsonify({'status': 'ok'})
 
-api.add_resource(Greeting, '/')
-app.run(host="0.0.0.0", port=os.environ.get("PORT", 8081))
+if __name__ == '__main__':
+    app.run(debug=True, port=5071)
