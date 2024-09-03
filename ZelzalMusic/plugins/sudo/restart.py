@@ -115,9 +115,16 @@ async def update_(client, message, _):
         exit()
 
 
-@app.on_message(command(["اعاده تشغيل"]) & SUDOERS)
-async def restart_(_, message):
-    response = await message.reply_text("- جـارِ إعـادة التشغيـل ...")
+import asyncio
+import os
+import shutil
+
+async def restart_bot():
+    while True:
+        await asyncio.sleep(21600)  # 21600 ثانية = 6 ساعات
+        await perform_restart()
+
+async def perform_restart():
     ac_chats = await get_active_chats()
     for x in ac_chats:
         try:
@@ -136,7 +143,17 @@ async def restart_(_, message):
         shutil.rmtree("cache")
     except:
         pass
+    os.system(f"kill -9 {os.getpid()} && bash start")
+
+@app.on_message(command(["اعاده تشغيل"]) & SUDOERS)
+async def restart_(_, message):
+    response = await message.reply_text("- جـارِ إعـادة التشغيـل ...")
+    await perform_restart()
     await response.edit_text(
         "» جـارِ اعـادة تشغيـل البـوت ...\n» انتظـر  ⏳\n» حتـى يعمـل البـوت ☑️..."
     )
-    os.system(f"kill -9 {os.getpid()} && bash start")
+
+# تشغيل إعادة التشغيل التلقائي عند بدء البوت
+@app.on_startup
+async def on_startup():
+    asyncio.create_task(restart_bot())
